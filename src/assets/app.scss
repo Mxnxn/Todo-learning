@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+
+* {
+      padding: 0;
+      margin: 0;
+}
+
+body {
+      padding: 0;
+      background: rgba($color: #e2f3f5, $alpha: 1);
+}
+
+.lilita {
+      font-family: "Lilita One", cursive;
+}
+
+.main-cont {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+}
+
+.middle-cont {
+      width: 40vw;
+      display: flex;
+      flex-direction: column;
+}
+
+.heading {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: #22d1ee;
+      margin-top: 60px;
+      text-align: center;
+      border-bottom: 1px solid #22d1ee;
+      border-radius: 7px;
+}
+
+.input-block {
+      width: 100%;
+
+      .inputField {
+            margin-top: 30px;
+            padding-left: 20px;
+            font-family: "Poppins", sans-serif;
+            height: 60px;
+            border: 0;
+            font-size: 24px;
+            font-weight: 600;
+            border-bottom: 1px solid #3d5af1;
+            border-radius: 6px;
+            color: #3d5af1;
+            outline: none;
+            background-color: transparent;
+            width: 70%;
+            &::placeholder {
+                  color: #3d5af1;
+            }
+      }
+
+      button {
+            margin-left: 20px;
+            height: 55%;
+            width: 20%;
+            outline: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 20px;
+            background-color: #3d5af1;
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            border: 0;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+
+            &:hover {
+                  transform: scale(0.9);
+            }
+      }
+}
+
+.todo-task:first-child {
+      margin-top: 0 !important;
+}
+
+.todo-task {
+      display: flex;
+      width: 100%;
+      height: 70px;
+      margin: 20px 0 0 0;
+      background-color: #581b98;
+      border-radius: 8px;
+      font-size: 18px;
+
+      .srno {
+            width: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+      }
+
+      .task-name {
+            width: 75%;
+            display: flex;
+            align-items: center;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+      }
+
+      .actions {
+            width: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            button {
+                  outline: none;
+                  height: 24px;
+                  width: 24px;
+                  border-radius: 6px;
+                  border: 0px solid;
+                  background: #3d5af1;
+                  cursor: pointer;
+                  transition: 0.2s ease;
+
+                  svg {
+                        color: white;
+                  }
+
+                  &:hover {
+                        transform: scale(1.2);
+                  }
+            }
+      }
+}
+
+.scrollable {
+      display: flex;
+      padding: 0 10px;
+      flex-direction: column;
+
+      &::-webkit-scrollbar {
+            width: 5px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+            background: transparent;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+            background: #3d5af1;
+            border-radius: 40px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+            background: #0e153a;
+      }
+}
