@@ -15,6 +15,7 @@ const Layout = (props) => {
             temp.push({ sr: temp.length + 1, task: taskName });
             // setting that deep copy to tasks to rerender layout component to display
             setTasks(temp);
+            setTaskName("");
             // short statement for setting task
             // setTasks([...tasks, { sr: tasks.length + 1, task: taskName }]);
       };
@@ -36,6 +37,28 @@ const Layout = (props) => {
             setTasks([...tasks]);
       };
 
+      // set this true when edit button is clicked
+      // while click set srno of task and view true
+      // using view show a input field and confirm button to save
+      const [editModal, setEditModal] = useState({
+            view: false,
+            srno: 0,
+            newText: "",
+      });
+
+      // get new editted taskname
+      // remove previos one and add add new at same index
+      // for adding syntax : task.splice(index,1,newObj)
+      const editTask = () => {
+            const index = tasks.findIndex((el) => el.sr === editModal.srno);
+            if (index !== -1) {
+                  const temp = [...tasks];
+                  temp.splice(index, 1);
+                  temp.splice(index, 0, { sr: editModal.srno, task: editModal.newText });
+                  setTasks([...temp]);
+            }
+      };
+
       return (
             <div className="main-cont">
                   <div className="middle-cont">
@@ -50,9 +73,34 @@ const Layout = (props) => {
                               />
                               <button onClick={onAddButton}>Add</button>
                         </div>
+                        {editModal.view && (
+                              <div className="input-block">
+                                    <input
+                                          className="inputField"
+                                          value={editModal.newText}
+                                          onChange={(e) => {
+                                                setEditModal({ ...editModal, newText: e.target.value });
+                                          }}
+                                          type="text"
+                                          placeholder="Edit"
+                                    />
+                                    <button onClick={editTask}>Save</button>
+                              </div>
+                        )}
                         <div className="scrollable" style={{ overflow: "auto", height: "70vh", marginTop: "40px" }}>
                               {tasks.map((el, index) => (
-                                    <Task key={index} onDeletePress={deleteTask} sr={el.sr} task={el.task} />
+                                    <Task
+                                          key={index}
+                                          onEditPress={(sr, txt) => {
+                                                // "!" used for opposite for opening and closing
+                                                // sr number sending from task
+                                                // setting previos text from text
+                                                setEditModal({ view: !editModal.view, srno: sr, newText: txt });
+                                          }}
+                                          onDeletePress={deleteTask}
+                                          sr={el.sr}
+                                          task={el.task}
+                                    />
                               ))}
                         </div>
                   </div>

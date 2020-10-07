@@ -6,7 +6,7 @@ import Layout from "./MainTodo/Layout";
 const App = (props) => {
       return (
             <BrowserRouter>
-                  <Route path="/" render={(props) => <Layout />} />
+                  <Route path="/test" exact render={(props) => <Layout />} />
             </BrowserRouter>
       );
 };
